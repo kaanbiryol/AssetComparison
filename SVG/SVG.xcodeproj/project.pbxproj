@@ -10,7 +10,6 @@
 		672D3D3E28A5B17A003FD23F /* SVG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 672D3D3528A5B17A003FD23F /* SVG.framework */; };
 		672D3D4328A5B17A003FD23F /* SVGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672D3D4228A5B17A003FD23F /* SVGTests.swift */; };
 		672D3D4428A5B17A003FD23F /* SVG.h in Headers */ = {isa = PBXBuildFile; fileRef = 672D3D3828A5B17A003FD23F /* SVG.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		672D3D7328A5B282003FD23F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672D3D7228A5B282003FD23F /* test.swift */; };
 		67FA7F6928A5B31700B1FF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67FA7F6828A5B31700B1FF8A /* Assets.xcassets */; };
 		67FA7F8628A6686400B1FF8A /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 67FA7F8528A6686400B1FF8A /* SnapshotTesting */; };
 /* End PBXBuildFile section */
@@ -23,34 +22,6 @@
 			remoteGlobalIDString = 672D3D3428A5B17A003FD23F;
 			remoteInfo = SVG;
 		};
-		67FA7F3928A5B2EE00B1FF8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67FA7F3428A5B2EE00B1FF8A /* PNG.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 67FA7F1C28A5B2EB00B1FF8A;
-			remoteInfo = PNG;
-		};
-		67FA7F3B28A5B2EE00B1FF8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67FA7F3428A5B2EE00B1FF8A /* PNG.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 67FA7F2428A5B2EB00B1FF8A;
-			remoteInfo = PNGTests;
-		};
-		67FA7F6428A5B30100B1FF8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67FA7F5F28A5B30100B1FF8A /* PDF.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 67FA7F4728A5B2FF00B1FF8A;
-			remoteInfo = PDF;
-		};
-		67FA7F6628A5B30100B1FF8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 67FA7F5F28A5B30100B1FF8A /* PDF.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 67FA7F4F28A5B2FF00B1FF8A;
-			remoteInfo = PDFTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -58,9 +29,6 @@
 		672D3D3828A5B17A003FD23F /* SVG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVG.h; sourceTree = "<group>"; };
 		672D3D3D28A5B17A003FD23F /* SVGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		672D3D4228A5B17A003FD23F /* SVGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGTests.swift; sourceTree = "<group>"; };
-		672D3D7228A5B282003FD23F /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		67FA7F3428A5B2EE00B1FF8A /* PNG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PNG.xcodeproj; path = ../../PNG/PNG.xcodeproj; sourceTree = "<group>"; };
-		67FA7F5F28A5B30100B1FF8A /* PDF.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PDF.xcodeproj; path = ../../PDF/PDF.xcodeproj; sourceTree = "<group>"; };
 		67FA7F6828A5B31700B1FF8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				672D3D3828A5B17A003FD23F /* SVG.h */,
-				672D3D7228A5B282003FD23F /* test.swift */,
 			);
 			path = SVG;
 			sourceTree = "<group>";
@@ -115,29 +82,9 @@
 		672D3D4128A5B17A003FD23F /* SVGTests */ = {
 			isa = PBXGroup;
 			children = (
-				67FA7F5F28A5B30100B1FF8A /* PDF.xcodeproj */,
-				67FA7F3428A5B2EE00B1FF8A /* PNG.xcodeproj */,
 				672D3D4228A5B17A003FD23F /* SVGTests.swift */,
 			);
 			path = SVGTests;
-			sourceTree = "<group>";
-		};
-		67FA7F3528A5B2EE00B1FF8A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				67FA7F3A28A5B2EE00B1FF8A /* PNG.framework */,
-				67FA7F3C28A5B2EE00B1FF8A /* PNGTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		67FA7F6028A5B30100B1FF8A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				67FA7F6528A5B30100B1FF8A /* PDF.framework */,
-				67FA7F6728A5B30100B1FF8A /* PDFTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,16 +175,6 @@
 			);
 			productRefGroup = 672D3D3628A5B17A003FD23F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 67FA7F6028A5B30100B1FF8A /* Products */;
-					ProjectRef = 67FA7F5F28A5B30100B1FF8A /* PDF.xcodeproj */;
-				},
-				{
-					ProductGroup = 67FA7F3528A5B2EE00B1FF8A /* Products */;
-					ProjectRef = 67FA7F3428A5B2EE00B1FF8A /* PNG.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				672D3D3428A5B17A003FD23F /* SVG */,
@@ -245,37 +182,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		67FA7F3A28A5B2EE00B1FF8A /* PNG.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PNG.framework;
-			remoteRef = 67FA7F3928A5B2EE00B1FF8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		67FA7F3C28A5B2EE00B1FF8A /* PNGTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PNGTests.xctest;
-			remoteRef = 67FA7F3B28A5B2EE00B1FF8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		67FA7F6528A5B30100B1FF8A /* PDF.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PDF.framework;
-			remoteRef = 67FA7F6428A5B30100B1FF8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		67FA7F6728A5B30100B1FF8A /* PDFTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PDFTests.xctest;
-			remoteRef = 67FA7F6628A5B30100B1FF8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		672D3D3328A5B17A003FD23F /* Resources */ = {
@@ -300,7 +206,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				672D3D7328A5B282003FD23F /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +408,6 @@
 		672D3D4B28A5B17A003FD23F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -519,7 +423,6 @@
 		672D3D4C28A5B17A003FD23F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
