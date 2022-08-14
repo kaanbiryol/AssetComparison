@@ -1,33 +1,24 @@
 # Importing packages
-import sys
 import time
 import subprocess
-from unittest import result
 import matplotlib.pyplot as plt
-from multiprocessing import Process, pool
 from multiprocessing import Pool
-import numpy as np
+
+def measure(type):
+    start_time = time.time()
+    output = subprocess.getoutput("./compile_assets.sh " + type)
+    end_time = time.time()
+    time_elapsed = format(end_time - start_time, ".2f")
+    return float(time_elapsed)
 
 def measure_svg():
-    start_time = time.time()
-    output = subprocess.getoutput("./compile_assets.sh SVG")
-    end_time = time.time()
-    time_elapsed = format(end_time - start_time, ".2f")
-    return float(time_elapsed)
+    return measure("SVG")
 
 def measure_png():
-    start_time = time.time()
-    output = subprocess.getoutput("./compile_assets.sh PNG")
-    end_time = time.time()
-    time_elapsed = format(end_time - start_time, ".2f")
-    return float(time_elapsed)
+    return measure("PNG")
 
 def measure_pdf():
-    start_time = time.time()
-    output = subprocess.getoutput("./compile_assets.sh PDF")
-    end_time = time.time()
-    time_elapsed = format(end_time - start_time, ".2f")
-    return float(time_elapsed)
+    return measure("PDF")
 
 def fmap(f):
     return f()
@@ -79,5 +70,4 @@ if __name__ == "__main__":
 
     plt.legend()
     plt.show()
-    plt.savefig('comparison.png')
 

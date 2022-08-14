@@ -6,31 +6,38 @@
 //
 
 import XCTest
+import SnapshotTesting
 @testable import PDF
 
 class PDFTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test() {
+        let colors: [UIColor] = [.red]
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        
+        let bundleBeingTested = Bundle(identifier: "biryol.PDF")!
+        for i in 0...1172 {
+            let image = UIImage(named: "\(i)asset", in: bundleBeingTested, compatibleWith: nil)
+            let imageView = UIImageView(image: image)
+            let innerStackView = UIStackView()
+            innerStackView.spacing = 8
+            innerStackView.axis = .horizontal
+            for color in colors {
+                imageView.tintColor = color
+                let label = UILabel()
+                label.text = "\(i)asset, color \(color.description)"
+                innerStackView.addArrangedSubview(label)
+                innerStackView.addArrangedSubview(imageView)
+            }
+            stackView.addArrangedSubview(innerStackView)
         }
+        
+        let size = stackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        stackView.frame = CGRect(origin: .zero, size: size)
+        
+        assertSnapshot(matching: stackView, as: .image)
     }
 
 }
