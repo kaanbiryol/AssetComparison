@@ -1,4 +1,4 @@
-# Importing packages
+from email import iterators
 import subprocess
 import matplotlib.pyplot as plt
 from multiprocessing import Pool
@@ -7,7 +7,16 @@ import json
 from datetime import datetime
 
 def snapshot(type):
-    return subprocess.getoutput("./run_snapshot_tests.sh " + type)
+    command = f"""
+    xcodebuild \
+    -project {type}/{type}.xcodeproj \
+    -scheme {type}Tests \
+    -sdk iphonesimulator \
+    -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.5' \
+    test
+    """
+    output = subprocess.getoutput(command)
+    return output
 
 def snapshot_svg():
     return calculate_time_elapsed(snapshot("SVG"))
@@ -32,51 +41,37 @@ def calculate_time_elapsed(terminalOutput):
 def fmap(f):
     return f()
 
-number_of_iterations = 2
+number_of_iterations = 5
 
 svg_snapshot_times = []
 pdf_snapshot_times = []
 png_snapshot_times = []
 
 if __name__ == "__main__":
-    ## we have 3 asset types to measure for now
-    # pool = Pool(number_of_iterations * 3)
-    # poolList = ([measure_svg] * number_of_iterations) + ([measure_pdf] * number_of_iterations) + ([measure_png] * number_of_iterations)
-    # svgResult = pool.map(fmap, poolList)
-    # splitResult = np.array_split(svgResult, 3)
-    # svg_build_times = splitResult[0]
-    # pdf_build_times = splitResult[1]
-    # png_build_times = splitResult[2]
 
-    svgPool = Pool(number_of_iterations)
-    svgList = [snapshot_svg] * number_of_iterations
-    svgResult = svgPool.map(fmap, svgList)
-    svg_build_times = svgResult
+    for _ in range(number_of_iterations):
+        svg_snapshot_times.append(snapshot_svg())
+        pdf_snapshot_times.append(snapshot_pdf())
+        png_snapshot_times.append(snapshot_png())
 
-    pdfPool = Pool(number_of_iterations)
-    pdfList = [snapshot_pdf] * number_of_iterations
-    pdfResult = pdfPool.map(fmap, pdfList)
-    pdf_build_times = pdfResult
+    print("svg", svg_snapshot_times)
+    print("pdf", pdf_snapshot_times)
+    print("png", png_snapshot_times)
 
-    pngPool = Pool(number_of_iterations)
-    pngList = [snapshot_png] * number_of_iterations
-    pngResult = pngPool.map(fmap, pngList)
-    png_build_times = pngResult
+    x = ["SVG", "PDF", "PNG"]
+    snapshot_times = [
+        sum(svg_snapshot_times) / len(svg_snapshot_times),
+        sum(pdf_snapshot_times) / len(pdf_snapshot_times), 
+        sum(png_snapshot_times) / len(png_snapshot_times)
+    ]
 
-    print("svg", svg_build_times)
-    print("pdf", pdf_build_times)
-    print("png", png_build_times)
+    x_pos = [i for i, _ in enumerate(x)]
 
-    iteration = range(1, number_of_iterations + 1)
-    plt.suptitle('Snapshot times', fontsize=18)
-    plt.xlabel('Iteration', fontsize=18)
-    plt.ylabel('Build time', fontsize=18)
+    plt.bar(x_pos, snapshot_times, width=0.35, color='green')
+    plt.ylabel("Time in seconds")
+    plt.title(f"Average snapshot time ({number_of_iterations} iterations)")
 
-    plt.xticks(iteration)
-    plt.plot(iteration, pdf_build_times, 'r', label='PDF')
-    plt.plot(iteration, svg_build_times, 'g', label='SVG')
-    plt.plot(iteration, png_build_times, 'b', label='PNG')
+    plt.xticks(x_pos, x)
 
-    plt.legend()
     plt.show()
 
